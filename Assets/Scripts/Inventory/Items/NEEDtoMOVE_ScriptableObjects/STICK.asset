@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a15095e6621bb47ac90e42d72d49d0, type: 3}
+  m_Name: STICK
+  m_EditorClassIdentifier: 
+  itemName: StickMAN
+  itemDescription: Super punch STICK
+  itemIcon: {fileID: 0}
+  prefab: {fileID: 124849112724849856, guid: 88f83b34d7f391240b4a1df1601bfb1d, type: 3}
+  damage: 0
+  range: 6
+  weaponType: 0
