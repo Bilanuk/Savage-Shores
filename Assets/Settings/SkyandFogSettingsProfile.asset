@@ -246,7 +246,7 @@ MonoBehaviour:
   - {fileID: 1142777632297148762}
   - {fileID: -7724654706381055090}
   - {fileID: 8963070376821373078}
-  - {fileID: 7642060734654139733}
+  - {fileID: 2804348997582581704}
   - {fileID: -3094157692011562330}
 --- !u!114 &1142777632297148762
 MonoBehaviour:
@@ -279,7 +279,7 @@ MonoBehaviour:
   fogType:
     m_OverrideState: 1
     m_Value: 0
---- !u!114 &7642060734654139733
+--- !u!114 &2804348997582581704
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,16 +303,16 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 13.88598
   compensation:
     m_OverrideState: 1
     m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: -1
   limitMax:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 12.771958
   curveMap:
     m_OverrideState: 1
     m_Value:
@@ -405,7 +405,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   histogramPercentages:
     m_OverrideState: 1
-    m_Value: {x: 40, y: 90}
+    m_Value: {x: 36.582657, y: 100}
   histogramUseCurveRemapping:
     m_OverrideState: 1
     m_Value: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   proceduralRadii:
     m_OverrideState: 1
-    m_Value: {x: 0.15, y: 0.15}
+    m_Value: {x: 0.3, y: 0.3}
   maskMinIntensity:
     m_OverrideState: 0
     m_Value: -30
@@ -454,7 +454,7 @@ MonoBehaviour:
     m_Value: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_Value: {r: 0.048891068, g: 1, b: 0, a: 1}
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -478,7 +478,7 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 59
+    m_Value: 1133
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -487,10 +487,10 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   globalLightProbeDimmer:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.506
   depthExtent:
     m_OverrideState: 1
-    m_Value: 83.14
+    m_Value: 134.8
   denoisingMode:
     m_OverrideState: 1
     m_Value: 2
