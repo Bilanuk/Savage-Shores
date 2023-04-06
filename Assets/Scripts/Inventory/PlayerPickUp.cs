@@ -1,8 +1,9 @@
 using System.Collections;
+using Unity.Netcode;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPickUp : MonoBehaviour
+public class PlayerPickUp : NetworkBehaviour
 {
     [SerializeField]
     private float pickupRange;
@@ -21,6 +22,8 @@ public class PlayerPickUp : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner) { return; }
+
         Pickup();
     }
 
