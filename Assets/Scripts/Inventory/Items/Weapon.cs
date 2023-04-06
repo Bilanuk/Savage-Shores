@@ -8,7 +8,7 @@ public class Weapon : Item
 {
 
     public GameObject prefab;
-    public int damage;
+    public int damage; 
     public float range;
     public ItemType weaponType;
 
