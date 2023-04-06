@@ -12,6 +12,8 @@ public class PlayerPickUp : MonoBehaviour
 
     private Camera cam;
 
+    private Inventory inventory;
+
     private void Start()
     {
         GetReferences();
@@ -19,14 +21,22 @@ public class PlayerPickUp : MonoBehaviour
 
     private void Update()
     {
+        Pickup();
+    }
+
+    private void Pickup()
+    {
         if (Input.GetKeyDown(KeyCode.E))
         {
             Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, pickupRange, pickupLayer))
             {
-                Debug.Log("Picked up " + hit.transform.name);
-                //hit.collider.GetComponent<PickUp>().PickUpItem();
+                Weapon item = hit.transform.GetComponent<ItemObject>().item as Weapon;
+                if (inventory.AddItem(item))
+                {
+                    Destroy(hit.transform.gameObject);
+                }
             }
         }
     }
@@ -34,5 +44,6 @@ public class PlayerPickUp : MonoBehaviour
     private void GetReferences()
     {
         cam = Camera.main;
+        inventory = GetComponent<Inventory>();
     }
 }

@@ -259,6 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289827434772037933}
   - component: {fileID: 2534654416231590487}
+  - component: {fileID: 1239316590668287489}
   m_Layer: 7
   m_Name: Sword Pickup
   m_TagString: Untagged
@@ -297,3 +298,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.41442728, y: 1.1562164, z: 0.08583689}
   m_Center: {x: 0.008369684, y: 0.3348204, z: 0.031281233}
+--- !u!114 &1239316590668287489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264344509777958806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75c71abc38195a49b7c2cd6693ed49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: f7d38eddbf2cea1469d94368d36791dd, type: 2}

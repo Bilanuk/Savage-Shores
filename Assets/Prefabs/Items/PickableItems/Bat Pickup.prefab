@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8032244168727477486}
   - component: {fileID: 3640540775527142707}
+  - component: {fileID: 3839432494928802607}
   m_Layer: 7
   m_Name: Bat Pickup
   m_TagString: Untagged
@@ -47,6 +48,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.123394966, y: 1.4030252, z: 0.12580824}
   m_Center: {x: 0.000031471252, y: 0.48042488, z: -0.008222342}
+--- !u!114 &3839432494928802607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462966758758737370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75c71abc38195a49b7c2cd6693ed49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 39659a73dbd5dfb4cad2b5b2ff072a64, type: 2}
 --- !u!1 &3339395590595240176
 GameObject:
   m_ObjectHideFlags: 0
