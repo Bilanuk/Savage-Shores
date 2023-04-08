@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Unity.Netcode;
 
-public class BasicRigidBodyPush : MonoBehaviour
+public class BasicRigidBodyPush : NetworkBehaviour
 {
 	public LayerMask pushLayers;
 	public bool canPush;
@@ -28,8 +29,19 @@ public class BasicRigidBodyPush : MonoBehaviour
 
 		// Calculate push direction from move direction, horizontal motion only
 		Vector3 pushDir = new Vector3(hit.moveDirection.x, 0.0f, hit.moveDirection.z);
+		var hitSerialized = new NetworkObjectReference(hit.gameObject.GetComponent<NetworkObject>());
+
+		PushRigidBodiesServerRPC(hitSerialized, pushDir);
+	}
+
+	[ServerRpc(RequireOwnership = false)]
+	public void PushRigidBodiesServerRPC(NetworkObjectReference hitReference, Vector3 pushDir)
+	{
+		if(!hitReference.TryGet(out NetworkObject hit)) { return; }
 
 		// Apply the push and take strength into account
+
+		var body = hit.GetComponent<Rigidbody>();
 		body.AddForce(pushDir * strength, ForceMode.Impulse);
 	}
 }
