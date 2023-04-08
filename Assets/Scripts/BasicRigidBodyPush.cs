@@ -43,5 +43,8 @@ public class BasicRigidBodyPush : NetworkBehaviour
 
 		var body = hit.GetComponent<Rigidbody>();
 		body.AddForce(pushDir * strength, ForceMode.Impulse);
+
+
+		Debug.Log($"Pushing {hit.name} with {pushDir} and {strength}");
 	}
 }
