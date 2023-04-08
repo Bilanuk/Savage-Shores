@@ -8,7 +8,7 @@ public class BasicRigidBodyPush : NetworkBehaviour
 	public bool canPush;
 	[Range(0.5f, 5f)] public float strength = 1.1f;
 
-	private float cooldownTime = 1.0f;
+	private float cooldownTime = 0.3f;
     private bool isCooldown = false;
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -18,8 +18,7 @@ public class BasicRigidBodyPush : NetworkBehaviour
 
 	private void PushRigidBodies(ControllerColliderHit hit)
 	{
-		if (isCooldown) return;
-		StartCoroutine(StartCooldown());
+		if (isCooldown) { return; }
 		// https://docs.unity3d.com/ScriptReference/CharacterController.OnControllerColliderHit.html
 
 		// make sure we hit a non kinematic rigidbody
@@ -38,6 +37,7 @@ public class BasicRigidBodyPush : NetworkBehaviour
 		var hitSerialized = new NetworkObjectReference(hit.gameObject.GetComponent<NetworkObject>());
 
 		PushRigidBodiesServerRPC(hitSerialized, pushDir);
+		StartCoroutine(StartCooldown());
 	}
 
 	[ServerRpc(RequireOwnership = false)]
