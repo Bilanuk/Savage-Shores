@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using Unity.Netcode;
+using System.Collections;
 
 public class BasicRigidBodyPush : NetworkBehaviour
 {
 	public LayerMask pushLayers;
 	public bool canPush;
 	[Range(0.5f, 5f)] public float strength = 1.1f;
+
+	private float cooldownTime = 1.0f;
+    private bool isCooldown = false;
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
@@ -14,6 +18,8 @@ public class BasicRigidBodyPush : NetworkBehaviour
 
 	private void PushRigidBodies(ControllerColliderHit hit)
 	{
+		if (isCooldown) return;
+		StartCoroutine(StartCooldown());
 		// https://docs.unity3d.com/ScriptReference/CharacterController.OnControllerColliderHit.html
 
 		// make sure we hit a non kinematic rigidbody
@@ -47,4 +53,11 @@ public class BasicRigidBodyPush : NetworkBehaviour
 
 		Debug.Log($"Pushing {hit.name} with {pushDir} and {strength}");
 	}
+
+	private IEnumerator StartCooldown()
+    {
+        isCooldown = true;
+        yield return new WaitForSeconds(cooldownTime);
+        isCooldown = false;
+    }
 }
