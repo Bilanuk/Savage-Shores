@@ -38,7 +38,6 @@ public class GameNetworkManager : MonoBehaviour
         SteamMatchmaking.OnLobbyInvite += SteamMatchmaking_OnLobbyInvite;
         SteamMatchmaking.OnLobbyGameCreated += SteamMatchmaking_OnLobbyGameCreated;
         SteamFriends.OnGameLobbyJoinRequested += SteamFriends_OnGameLobbyJoinRequested;
-
     }
 
     private void OnDestroy()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.Netcode;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject chatPanel, textObject;
     [SerializeField] private TMP_InputField inputField;
 
-
+    [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject playerFieldBox, playerCardPrefab;
     [SerializeField] private GameObject readyButton, NotreadyButton, startButton;
 
@@ -149,6 +150,8 @@ public class GameManager : MonoBehaviour
             _pi.steamId = _steamId;
             _pi.steamName = _steamName;
             playerInfo.Add(_cliendId, _pi.gameObject);
+
+            SpawnPlayerServerRpc(_cliendId, _steamId, Vector3.zero);
         }
     }
 
@@ -161,7 +164,6 @@ public class GameManager : MonoBehaviour
             ulong _clientId = _player.Key;
 
             NetworkTransmission.instance.UpdateClientsPlayerInfoClientRPC(_steamId, _steamName, _clientId);
-
         }
     }
 
@@ -216,5 +218,14 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SpawnPlayerServerRpc(ulong _clientId, ulong _steamId, Vector3 _position)
+    {
+        GameObject _player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        _player.GetComponent<PlayerOverheadInfo>().SetPlayerName(playerInfo[_clientId].GetComponent<PlayerInfo>().steamName);
+        _player.GetComponent<PlayerOverheadInfo>().SetPlayerIcon(_steamId);
+        _player.GetComponent<NetworkObject>().SpawnAsPlayerObject(_clientId, true);
     }
 }
