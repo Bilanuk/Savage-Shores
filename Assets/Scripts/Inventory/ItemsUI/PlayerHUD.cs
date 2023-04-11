@@ -5,18 +5,57 @@ using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour
 {
-    private ItemsUI itemsUI;
+    private GameObject hotbar;
+    private ItemsUI[] itemsUI;
+    private int slotsCount;
+    private KeyCode[] keys;
 
-    private void Awake()
+    private void Awake() { }
+
+    public void UpdateWeaponUI(Item item, int index)
     {
-        if (itemsUI == null)
+        itemsUI[index].UpdateInfo(item.itemIcon, item.itemName);
+    }
+
+    private void KeyS()
+    {
+        keys = new KeyCode[slotsCount];
+        for (int i = 0; i < slotsCount; i++)
         {
-            itemsUI = GameObject.FindGameObjectWithTag("ItemsUI").GetComponent<ItemsUI>();
+            keys[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), "Alpha" + (i + 1));
         }
     }
 
-    public void UpdateWeaponUI(Item item)
+    private void Init()
     {
-        itemsUI.UpdateInfo(item.itemIcon, item.itemName);
+        if (hotbar == null)
+        {
+            hotbar = GameObject.FindGameObjectWithTag("HotBar").GetComponent<GameObject>();
+        }
+
+        slotsCount = hotbar.transform.childCount;
+        itemsUI = new ItemsUI[slotsCount];
+        for (int i = 0; i < slotsCount; i++)
+        {
+            itemsUI[i] = hotbar.transform.GetChild(i).GetComponent<ItemsUI>();
+        }
+    }
+
+    private void Start()
+    {
+        Init();
+        KeyS();
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < keys.Length; i++)
+        {
+            if (Input.GetKeyDown(keys[i]))
+            {
+                Debug.Log("Using " + itemsUI[i]);
+                return;
+            }
+        }
     }
 }

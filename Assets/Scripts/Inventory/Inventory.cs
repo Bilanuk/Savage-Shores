@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    private int slots = 5;
+
     [SerializeField]
     private Item[] items;
     private PlayerHUD HUD;
 
     private void Init()
     {
-        items = new Item[5];
+        items = new Item[slots];
     }
 
     public bool AddItem(Item item)
@@ -22,11 +24,10 @@ public class Inventory : MonoBehaviour
             {
                 items[i] = item;
                 isadded = true;
+                //HUD.UpdateWeaponUI(item, i);
                 break;
             }
         }
-
-        HUD.UpdateWeaponUI(item);
 
         return isadded;
     }
@@ -45,7 +46,7 @@ public class Inventory : MonoBehaviour
 
     public Weapon GetItem(int index)
     {
-        return (Weapon)items[index];
+        return items[index] as Weapon;
     }
 
     private void Start()
@@ -57,5 +58,10 @@ public class Inventory : MonoBehaviour
     private void GetReferences()
     {
         HUD = GetComponent<PlayerHUD>();
+    }
+
+    public int GetSlotsCount()
+    {
+        return slots;
     }
 }

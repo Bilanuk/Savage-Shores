@@ -17,4 +17,9 @@ public class ItemsUI : MonoBehaviour
         this.icon.sprite = icon;
         this.nameText.text = text;
     }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }
