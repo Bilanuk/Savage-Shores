@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8255444809248701209
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f077503be6ae942a1e1245dbd53ea9, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  quality:
+    m_OverrideState: 1
+    m_Value: 1
+  threshold:
+    m_OverrideState: 1
+    m_Value: 2.04
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.513
+  scatter:
+    m_OverrideState: 1
+    m_Value: 0.619
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  dirtTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+  dirtIntensity:
+    m_OverrideState: 1
+    m_Value: 0
+  anamorphic:
+    m_OverrideState: 0
+    m_Value: 1
+  m_Resolution:
+    m_OverrideState: 1
+    m_Value: 2
+  m_HighQualityPrefiltering:
+    m_OverrideState: 1
+    m_Value: 0
+  m_HighQualityFiltering:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &-7724654706381055090
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -198,7 +244,7 @@ MonoBehaviour:
     m_Value: 3
   enabled:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   enabledTransparent:
     m_OverrideState: 1
     m_Value: 1
@@ -207,10 +253,10 @@ MonoBehaviour:
     m_Value: 2
   m_MinSmoothness:
     m_OverrideState: 1
-    m_Value: 0.273
+    m_Value: 0.4
   m_SmoothnessFadeStart:
     m_OverrideState: 1
-    m_Value: 0.583
+    m_Value: 0.5
   reflectSky:
     m_OverrideState: 1
     m_Value: 1
@@ -228,7 +274,7 @@ MonoBehaviour:
     m_Value: 0.75
   m_RayMaxIterations:
     m_OverrideState: 1
-    m_Value: 497
+    m_Value: 64
   rayMiss:
     m_OverrideState: 0
     m_Value: 3
@@ -253,14 +299,14 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   m_Denoise:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   m_DenoiserRadius:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 5
   m_AffectSmoothSurfaces:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   mode:
     m_OverrideState: 1
     m_Value: 2
@@ -269,7 +315,7 @@ MonoBehaviour:
     m_Value: 0
   sampleCount:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 5
   bounceCount:
     m_OverrideState: 1
     m_Value: 1
@@ -295,6 +341,7 @@ MonoBehaviour:
   - {fileID: 2804348997582581704}
   - {fileID: -3094157692011562330}
   - {fileID: -3309671327436649650}
+  - {fileID: -8255444809248701209}
 --- !u!114 &1142777632297148762
 MonoBehaviour:
   m_ObjectHideFlags: 3
