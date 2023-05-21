@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Steamworks;
+using Steamworks.Data;
+using Netcode.Transports.Facepunch;
 
 public class NetworkTransmission : NetworkBehaviour
 {
     public static NetworkTransmission instance;
+    [SerializeField] private GameObject playerPrefab;
 
     private void Awake()
     {
@@ -44,6 +48,16 @@ public class NetworkTransmission : NetworkBehaviour
     public void RemoveMeFromDictionaryServerRPC(ulong _steamId)
     {
         RemovePlayerFromDictionaryClientRPC(_steamId);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SpawnPlayerServerRpc(ulong _clientId, ulong _steamId, Vector3 _position)
+    {
+        Debug.Log("spawning player");
+        GameObject _player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        _player.GetComponent<PlayerOverheadInfo>().SetPlayerName(SteamClient.Name);
+        _player.GetComponent<PlayerOverheadInfo>().SetPlayerIcon(_steamId);
+        _player.GetComponent<NetworkObject>().SpawnAsPlayerObject(_clientId, true);
     }
 
     [ClientRpc]
