@@ -3,6 +3,7 @@ using Unity.Netcode;
 using Steamworks;
 using Steamworks.Data;
 using Netcode.Transports.Facepunch;
+using UnityEngine.SceneManagement;
 
 public class GameNetworkManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class GameNetworkManager : MonoBehaviour
     public Lobby? currentLobby { get; private set; } = null;
 
     public ulong hostId;
+
+    public int _maxMembers = 10;
 
     private void Awake()
     {
@@ -131,12 +134,29 @@ public class GameNetworkManager : MonoBehaviour
         NetworkTransmission.instance.AddMeToDictionaryServerRPC(SteamClient.SteamId, SteamClient.Name, NetworkManager.Singleton.LocalClientId); //
     }
 
-    public async void StartHost(int _maxMembers)
+    private async void OnLoadComplete(ulong clientId, string sceneName, LoadSceneMode mode)
     {
-        NetworkManager.Singleton.OnServerStarted += Singleton_OnServerStarted;
-        NetworkManager.Singleton.StartHost();
+        if (NetworkManager.Singleton.IsHost)
+        {
+            GameManager.instance.HostCreated();
+        }
+        else
+        {
+            GameManager.instance.ConnectedAsClient();
+        }
         GameManager.instance.myClientId = NetworkManager.Singleton.LocalClientId;
         currentLobby = await SteamMatchmaking.CreateLobbyAsync(_maxMembers);
+    }
+
+
+    public async void StartHost(int _maxMembers)
+    {
+        this._maxMembers = _maxMembers;
+        NetworkManager.Singleton.OnServerStarted += Singleton_OnServerStarted;
+        NetworkManager.Singleton.StartHost();
+        NetworkManager.Singleton.SceneManager.OnLoadComplete += OnLoadComplete;
+
+        Loader.LoadNetwork(Loader.Scene.GameScene);
     }
 
     public void StartClient(SteamId _sId)
@@ -193,6 +213,6 @@ public class GameNetworkManager : MonoBehaviour
     private void Singleton_OnServerStarted()
     {
         Debug.Log("Host started");
-        GameManager.instance.HostCreated();
+        // GameManager.instance.HostCreated();
     }
 }
