@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] private GameObject multiMenu, multiLobby;
-
     [SerializeField] private GameObject chatPanel, textObject;
     [SerializeField] private TMP_InputField inputField;
 
@@ -113,16 +111,12 @@ public class GameManager : MonoBehaviour
 
     public void HostCreated()
     {
-        multiMenu.SetActive(false);
-        multiLobby.SetActive(true);
         isHost = true;
         connected = true;
     }
 
     public void ConnectedAsClient()
     {
-        multiMenu.SetActive(false);
-        multiLobby.SetActive(true);
         isHost = false;
         connected = true;
     }
@@ -136,8 +130,6 @@ public class GameManager : MonoBehaviour
             Destroy(card);
         }
 
-        multiMenu.SetActive(true);
-        multiLobby.SetActive(false);
         isHost = false;
         connected = false;
     }
@@ -146,7 +138,7 @@ public class GameManager : MonoBehaviour
     {
         if (!playerInfo.ContainsKey(_cliendId))
         {
-            PlayerInfo _pi = Instantiate(playerCardPrefab, playerFieldBox.transform).GetComponent<PlayerInfo>();
+            PlayerInfo _pi = Instantiate(playerCardPrefab).GetComponent<PlayerInfo>();
             _pi.steamId = _steamId;
             _pi.steamName = _steamName;
             playerInfo.Add(_cliendId, _pi.gameObject);
@@ -191,7 +183,7 @@ public class GameManager : MonoBehaviour
 
     public void ReadyButton(bool _ready)
     {
-        NetworkTransmission.instance.IsTheClientReadyServerRPC(_ready, myClientId);
+        // NetworkTransmission.instance.IsTheClientReadyServerRPC(_ready, myClientId);
     }
 
     public bool CheckIfPlayersAreReady()
@@ -202,12 +194,12 @@ public class GameManager : MonoBehaviour
         {
             if (!_player.Value.GetComponent<PlayerInfo>().isReady)
             {
-                startButton.SetActive(false);
+                // startButton.SetActive(false);
                 return false;
             }
             else
             {
-                startButton.SetActive(true);
+                // startButton.SetActive(true);
                 _ready = true;
             }
         }

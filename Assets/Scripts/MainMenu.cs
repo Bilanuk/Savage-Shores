@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Steamworks;
+using Steamworks.Data;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : Menu
 {
-    // play oneshot sound when button is clicked
-    public void PlaySound(AudioClip sound)
+    public void CreateGame()
     {
-        AudioSource.PlayClipAtPoint(sound, transform.position);
+        GameNetworkManager.instance.StartHost(10);
     }
-
 }

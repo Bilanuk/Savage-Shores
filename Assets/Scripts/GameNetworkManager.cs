@@ -26,6 +26,7 @@ public class GameNetworkManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("Destroying duplicate GameNetworkManager");
             Destroy(gameObject);
             return;
         }
@@ -149,7 +150,7 @@ public class GameNetworkManager : MonoBehaviour
     }
 
 
-    public async void StartHost(int _maxMembers)
+    public void StartHost(int _maxMembers)
     {
         this._maxMembers = _maxMembers;
         NetworkManager.Singleton.OnServerStarted += Singleton_OnServerStarted;

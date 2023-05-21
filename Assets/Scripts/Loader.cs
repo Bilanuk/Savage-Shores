@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 
 public static class Loader {
     public enum Scene {
-        MainMenuScene,
+        MainMenu,
         GameScene,
-        LoadingScene,
-        LobbyScene,
-        CharacterSelectScene,
+        LoadingScene
     }
 
     private static Scene targetScene;
@@ -18,7 +16,7 @@ public static class Loader {
     public static void Load(Scene targetScene) {
         Loader.targetScene = targetScene;
 
-        SceneManager.LoadScene(Scene.LoadingScene.ToString());
+        SceneManager.LoadScene(targetScene.ToString());
     }
 
     public static void LoadNetwork(Scene targetScene) {
@@ -26,6 +24,6 @@ public static class Loader {
     }
 
     public static void LoaderCallback() {
-        SceneManager.LoadScene(targetScene.ToString());
+        // SceneManager.LoadScene(targetScene.ToString());
     }
 }
