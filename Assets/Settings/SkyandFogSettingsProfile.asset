@@ -253,10 +253,10 @@ MonoBehaviour:
     m_Value: 2
   m_MinSmoothness:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.416
   m_SmoothnessFadeStart:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.715
   reflectSky:
     m_OverrideState: 1
     m_Value: 1
@@ -299,14 +299,14 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   m_Denoise:
-    m_OverrideState: 1
-    m_Value: 1
+    m_OverrideState: 0
+    m_Value: 0
   m_DenoiserRadius:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 1
   m_AffectSmoothSurfaces:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   mode:
     m_OverrideState: 1
     m_Value: 2
@@ -315,7 +315,7 @@ MonoBehaviour:
     m_Value: 0
   sampleCount:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 1
   bounceCount:
     m_OverrideState: 1
     m_Value: 1
