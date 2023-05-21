@@ -81,7 +81,7 @@ public class GameNetworkManager : MonoBehaviour
         else
         {
             currentLobby = _lobby;
-            GameManager.instance.ConnectedAsClient();
+            // GameManager.instance.ConnectedAsClient();
             Debug.Log("Joined Lobby");
         }
     }
