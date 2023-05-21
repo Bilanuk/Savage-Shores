@@ -9,7 +9,6 @@ using Netcode.Transports.Facepunch;
 public class NetworkTransmission : NetworkBehaviour
 {
     public static NetworkTransmission instance;
-    public GameObject playerPrefab;
 
     private void Awake()
     {
@@ -84,14 +83,5 @@ public class NetworkTransmission : NetworkBehaviour
                 }
             }
         }
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void SpawnPlayerServerRpc(ulong _clientId, ulong _steamId, Vector3 _position)
-    {
-        GameObject _player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-        _player.GetComponent<PlayerOverheadInfo>().SetPlayerName(GameManager.instance.playerInfo[_clientId].GetComponent<PlayerInfo>().steamName);
-        _player.GetComponent<PlayerOverheadInfo>().SetPlayerIcon(_steamId);
-        _player.GetComponent<NetworkObject>().SpawnAsPlayerObject(_clientId, true);
     }
 }
