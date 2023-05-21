@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject chatPanel, textObject;
     [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private GameObject playerPrefab;
 
+    [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject playerFieldBox, playerCardPrefab;
     [SerializeField] private GameObject readyButton, NotreadyButton, startButton;
 

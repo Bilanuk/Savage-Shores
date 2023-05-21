@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
-using Steamworks;
-using Steamworks.Data;
-using Netcode.Transports.Facepunch;
 
 public class NetworkTransmission : NetworkBehaviour
 {
