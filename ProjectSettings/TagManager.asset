@@ -8,6 +8,10 @@ TagManager:
   - ChatMessage
   - PlayerCard
   - PlayerEyes
+  - Goal
+  - Ball
+  - BlueGoal
+  - RedGoal
   layers:
   - Default
   - TransparentFX
